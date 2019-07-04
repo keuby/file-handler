@@ -2,9 +2,11 @@
   "name": "file-handler",
   "version": "1.0.0",
   "description": "can read and write files by line",
-  "main": "index.js",
+  "main": "dist/file-handler.cjs.js",
+  "module": "dist/file-handler.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "babel-node index.js",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,13 @@
   "bugs": {
     "url": "https://github.com/aistard/file-handler/issues"
   },
-  "homepage": "https://github.com/aistard/file-handler#readme"
+  "homepage": "https://github.com/aistard/file-handler#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/preset-env": "^7.4.5",
+    "rollup": "^1.16.4",
+    "rollup-plugin-babel": "^4.3.3"
+  }
 }
