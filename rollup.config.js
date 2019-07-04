@@ -9,8 +9,6 @@ export default {
   ],
   external: [ 'os', 'stream', 'fs', 'util' ],
   plugins: [
-    // resolve(),
-    // commonjs(),
     babel({
       exclude: ['node_modules/**'],
       babelrc: false,
