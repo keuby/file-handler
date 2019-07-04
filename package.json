@@ -1,0 +1,25 @@
+{
+  "name": "file-handler",
+  "version": "1.0.0",
+  "description": "can read and write files by line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aistard/file-handler.git"
+  },
+  "keywords": [
+    "file",
+    "handle",
+    "read",
+    "write"
+  ],
+  "author": "knight.chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aistard/file-handler/issues"
+  },
+  "homepage": "https://github.com/aistard/file-handler#readme"
+}
