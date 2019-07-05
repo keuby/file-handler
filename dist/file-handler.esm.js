@@ -31,7 +31,7 @@ function () {
   function LineReader(path) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
         _ref$bufferSize = _ref.bufferSize,
-        bufferSize = _ref$bufferSize === void 0 ? 10240 : _ref$bufferSize,
+        bufferSize = _ref$bufferSize === void 0 ? 1024 * 1024 : _ref$bufferSize,
         _ref$encoding = _ref.encoding,
         encoding = _ref$encoding === void 0 ? 'utf8' : _ref$encoding;
 
@@ -142,6 +142,8 @@ var FileWriter =
 function () {
   function FileWriter(path) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref$cacheLines = _ref.cacheLines,
+        cacheLines = _ref$cacheLines === void 0 ? 1000 : _ref$cacheLines,
         _ref$append = _ref.append,
         append = _ref$append === void 0 ? false : _ref$append,
         _ref$overwrite = _ref.overwrite,
@@ -154,14 +156,41 @@ function () {
     var flags = (append ? 'a' : 'w') + (overwrite ? '+' : 'x+');
     this.fd = fs.openSync(path, flags);
     this.encoding = encoding;
+    this.write = this._generaterWrite(cacheLines);
   }
 
   _createClass(FileWriter, [{
-    key: "write",
-    value: function write(data) {
-      fs.appendFileSync(this.fd, data, {
-        encoding: this.encoding
-      });
+    key: "_generaterWrite",
+    value: function _generaterWrite(cacheLines) {
+      var _this = this;
+
+      this._cached = [];
+
+      if (cacheLines && cacheLines > 1) {
+        return function (data) {
+          if (_this._cached.length >= cacheLines) {
+            _this.flush();
+          } else {
+            _this._cached.push(data);
+          }
+        };
+      } else {
+        return function (data) {
+          fs.appendFileSync(_this.fd, data, {
+            encoding: _this.encoding
+          });
+        };
+      }
+    }
+  }, {
+    key: "flush",
+    value: function flush() {
+      if (this._cached && this._cached.length > 0) {
+        fs.appendFileSync(this.fd, this._cached.join(''), {
+          encoding: this.encoding
+        });
+        this._cached = [];
+      }
     }
   }, {
     key: "writeLine",
@@ -171,6 +200,7 @@ function () {
   }, {
     key: "close",
     value: function close() {
+      this.flush();
       fs.closeSync(this.fd);
     }
   }]);

@@ -1,6 +1,6 @@
 {
   "name": "file-handler-sync",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Files can be read and written by line synchronously",
   "main": "dist/file-handler.cjs.js",
   "module": "dist/file-handler.esm.js",

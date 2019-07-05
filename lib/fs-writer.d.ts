@@ -25,6 +25,10 @@ declare namespace FileWriter {
     /**
      * 文本编码格式
      */
-    encoding: string
+    encoding: string,
+    /**
+     * 缓存行数, 开启这个参数后, 会缓存 cacheLines 行之后一次性写入
+     */
+    cacheLines: number
   }
 }
