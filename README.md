@@ -1,24 +1,24 @@
 ## File Handler
-`file-handler-sync` can synchronously read and write files by line
+`@lnfsink/file-handler` can synchronously read and write files by line
 
 ## Install
 
 Using npm:
 
 ```shell
-$ npm install file-handler-sync
+$ npm install @lnfsink/file-handler
 ```
 
 Using yarn:
 
 ```shell
-$ yarn add file-handler-sync
+$ yarn add @lnfsink/file-handler
 ```
 
 ## Usage
 
 ```javascript
-const handler = require('file-handler-sync')
+const handler = require('@lnfsink/file-handler')
 
 let reader = handler.read('example/input.txt', {
   bufferSize: 1024 * 1024, // 1M Default

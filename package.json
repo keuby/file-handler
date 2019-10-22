@@ -1,6 +1,6 @@
 {
-  "name": "file-handler-sync",
-  "version": "1.1.1",
+  "name": "@lnfsink/file-handler",
+  "version": "1.0.0",
   "description": "Files can be read and written by line synchronously",
   "main": "dist/file-handler.cjs.js",
   "module": "dist/file-handler.esm.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aistard/file-handler.git"
+    "url": "git+https://github.com/lnfsink/file-handler.git"
   },
   "keywords": [
     "file",
@@ -18,12 +18,12 @@
     "read",
     "write"
   ],
-  "author": "knight.chen",
+  "author": "lnfsink",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aistard/file-handler/issues"
+    "url": "https://github.com/lnfsink/file-handler/issues"
   },
-  "homepage": "https://github.com/aistard/file-handler#readme",
+  "homepage": "https://github.com/lnfsink/file-handler#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
